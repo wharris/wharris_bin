@@ -1,0 +1,6 @@
+#!/bin/sh
+SRC1=$@
+SRC2=`mktemp`.c
+cat $SRC1 | grep -v "^#!" > $SRC2
+OUT=`mktemp`
+cc $SRC2 -o $OUT && $OUT

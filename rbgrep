@@ -1,0 +1,3 @@
+#!/bin/sh
+
+find . \( -name "*.rb" -o -name "*.rhtml" -o -name "*.yml" \) -exec grep --color --with-filename "$@" {} \;

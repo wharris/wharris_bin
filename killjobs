@@ -1,0 +1,1 @@
+while kill % 2>/dev/null; do sleep 1;echo killing;done

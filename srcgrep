@@ -1,0 +1,20 @@
+#!/bin/sh
+
+find . \( -name "*.py" \
+       -o -name "*.java" \
+       -o -name "*.jsp" \
+       -o -name "*.eca" \
+       -o -name "*.js" \
+       -o -name "*.c" \
+       -o -name "*.cc" \
+       -o -name "*.h" \
+       -o -name "*.css" \
+       -o -name "*.tpl" \
+       -o -name "*.eca" \
+       -o -name "*.sh" \
+       -o -name "RELEASE" \
+       -o -name "applicationContext.xml" \
+       -o -name "spring-servlet.xml" \
+       -o -name "web.xml" \
+       -o -name "*.idl" \
+       -o -name "*.tag" \) -exec grep --color --with-filename "$@" {} \;
