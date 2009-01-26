@@ -18,17 +18,43 @@
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 REPO_NAME=$1
-REPO_SERVER='will@slice.shareyourpopcorn.com'
-REPO_SERVER_GIT_PATH='/home/will/git'
+
+if [[ "$REPO_NAME" == "" ]]; then
+        echo "Syntax: $0 REPO_NAME"
+        exit 1
+fi
+
+if ! git show > /dev/null 2> /dev/null; then
+        echo "Not a valid git repository"
+        exit 1
+fi
+
+if [[ "$REPO_SERVER" == "" ]]; then
+        echo "REPO_SERVER not set"
+        exit 1
+fi
+
+if [[ "$REPO_SERVER_GIT_PATH" == "" ]]; then
+        echo "REPO_SERVER_GIT_PATH not set"
+        exit 1
+fi
+
 REPO_SERVER_REPO_PATH="$REPO_SERVER_GIT_PATH/$REPO_NAME.git"
+
 echo "Create bare repo at $REPO_SERVER:$REPO_SERVER_REPO_PATH"
-ssh $REPO_SERVER "set +x &&
-                     mkdir $REPO_SERVER_REPO_PATH && \
-                     cd $REPO_SERVER_REPO_PATH &&
-                     git --bare init"
+if ! ssh $REPO_SERVER "mkdir $REPO_SERVER_REPO_PATH && \
+                       cd $REPO_SERVER_REPO_PATH && \
+                       git --bare init"; then
+        echo "Could not create repo"
+        exit 1
+fi
 
+echo "Setup remote origin"
 
-echo "Setup remote"
-git remote add origin "ssh://$REPO_SERVER$REPO_SERVER_REPO_PATH"
+if ! git remote add origin "ssh://$REPO_SERVER$REPO_SERVER_REPO_PATH"; then
+        echo "Could not add remote origin to local repo"
+        exit 1
+fi
+
 echo "Push"
 git push origin master
