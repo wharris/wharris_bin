@@ -17,8 +17,10 @@
 # with this program; if not, write to the Free Software Foundation, Inc.,
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
-SRC1=$@
+SRC1=$1
+shift
+ARGS=$@
 SRC2=`mktemp`.c
 cat $SRC1 | grep -v "^#!" > $SRC2
 OUT=`mktemp`
-cc $SRC2 -o $OUT && $OUT
+cc $SRC2 -o $OUT && $OUT $ARGS
