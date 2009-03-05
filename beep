@@ -1,4 +1,4 @@
-#!/bin/sh /Users/will/bin/cscript
+#!/bin/sh cscript
 
 /*
  * beep - make the terminal beep.
