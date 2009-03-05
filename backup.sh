@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# backup.sh - backup my home directory.
+# backup.sh - backup home directory.
 # Copyright (C) 2008  Will Harris
 # 
 # This program is free software; you can redistribute it and/or modify
@@ -18,9 +18,9 @@
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 STARTED=`date`
-mkdir -p /Users/will/log
+mkdir -p $HOME/log
 (echo Started $STARTED
-/usr/bin/rsync --exclude '*.avi' --exclude '*.mov' --exclude '*.mpg' --exclude "/tmp" --exclude ".Trash" --exclude "*.vmdk" -azE --delete --ignore-errors --rsh=ssh /Users/will/ "greatlibrary.dyndns.org:/Volumes/External\ HD/rsync_backup/fawkes/Users/will/"
+/usr/bin/rsync --exclude '*.avi' --exclude '*.mov' --exclude '*.mpg' --exclude "/tmp" --exclude ".Trash" --exclude "*.vmdk" -azE --delete --ignore-errors --rsh=ssh $HOME "$BACKUP_PATH"
 ENDED=`date`
-echo Ended $ENDED) > /Users/will/log/backup.log
+echo Ended $ENDED) > $BACKUP_LOG
 
