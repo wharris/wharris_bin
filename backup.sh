@@ -20,9 +20,9 @@
 STARTED=`date`
 mkdir -p $HOME/log
 (echo Started $STARTED
-growlnotify -n Backup -m "Backup started $STARTED" Backup
+/usr/local/bin/growlnotify -n Backup -m "Backup started $STARTED" Backup
 /usr/bin/rsync --exclude '*.avi' --exclude '*.mov' --exclude '*.mpg' --exclude "/tmp" --exclude ".Trash" --exclude "*.vmdk" -azE --delete --ignore-errors --rsh=ssh $HOME "$BACKUP_PATH"
 ENDED=`date`
-growlnotify -s -n Backup -m "Backup ended $ENDED" Backup
+/usr/local/bin/growlnotify -s -n Backup -m "Backup ended $ENDED" Backup
 echo Ended $ENDED) > $BACKUP_LOG
 
