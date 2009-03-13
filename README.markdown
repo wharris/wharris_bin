@@ -88,8 +88,3 @@ Contents
   
   Run with `srcgrep` _search-term_. This script greps through all the files
   below the current directory that look like source code.
-  
-* `wdiff` - frontend to opendiff.
-  
-  Use this as a `--diff-cmd` argument to `svn diff` in order to view your
-  diffs using FileMerge.
