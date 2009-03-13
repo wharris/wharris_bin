@@ -20,7 +20,7 @@
 $*
 
 if [ $? -eq 0 ]
-then /usr/local/bin/growlnotify -m "\"$*\" done (SUCCESS)"
+then netgrowl $GROWL_HOST "$*" "\"$*\" done (SUCCESS)"
 
-else /usr/local/bin/growlnotify -m "\"$*\" done (FAILED)"
+else netgrowl $GROWL_HOST "$*" "\"$*\" done (FAILED)"
 fi
