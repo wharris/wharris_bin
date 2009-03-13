@@ -39,6 +39,10 @@ if [[ "$REPO_SERVER_GIT_PATH" == "" ]]; then
         exit 1
 fi
 
+if [[ "$REMOTE_NAME" == "" ]]; then
+	REMOTE_NAME=origin
+fi
+
 REPO_SERVER_REPO_PATH="$REPO_SERVER_GIT_PATH/$REPO_NAME.git"
 
 echo "Create bare repo at $REPO_SERVER:$REPO_SERVER_REPO_PATH"
@@ -49,12 +53,12 @@ if ! ssh $REPO_SERVER "mkdir $REPO_SERVER_REPO_PATH && \
         exit 1
 fi
 
-echo "Setup remote origin"
+echo "Setup remote $REMOTE_NAME"
 
-if ! git remote add origin "ssh://$REPO_SERVER$REPO_SERVER_REPO_PATH"; then
-        echo "Could not add remote origin to local repo"
+if ! git remote add $REMOTE_NAME "ssh://$REPO_SERVER$REPO_SERVER_REPO_PATH"; then
+        echo "Could not add remote $REMOTE_NAME to local repo"
         exit 1
 fi
 
 echo "Push"
-git push origin master
+git push $REMOTE_NAME master

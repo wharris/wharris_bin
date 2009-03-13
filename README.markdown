@@ -58,6 +58,9 @@ Contents
   - `REPO_SERVER_GIT_PATH` - the path on the server under which your
     repositories will be created. For example _/home/username/git_.
   
+  The remote name defaults to origin, but you can override that by setting
+  the environment variable `REMOTE_NAME`.
+  
 * `growlexec` - growl the success or failure of a command.
   
   Runs the command given in the arguments then sends a Growl notification
