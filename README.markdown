@@ -84,12 +84,6 @@ Contents
   Run with `rbgrep` _search-term_. This script greps through all the files
   below the current directory that look like ruby code.
   
-* `restartvpn` - restart a CiscoVPN client.
-  
-  Sometimes the Cisco's VPN client software stops working due to evil spirits.
-  This script is a magical incantation that sometimes makes the client work
-  again.
-  
 * `srcgrep` - search a source tree.
   
   Run with `srcgrep` _search-term_. This script greps through all the files
