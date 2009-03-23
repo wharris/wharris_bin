@@ -115,4 +115,3 @@ if __name__ == '__main__':
   p = GrowlNotificationPacket(title=sys.argv[2], description=sys.argv[3])
   s.sendto(p.payload(), addr)
   s.close()
-  print "Done."
