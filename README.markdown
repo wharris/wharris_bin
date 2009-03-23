@@ -73,7 +73,15 @@ Contents
   a sub-shell, so you'll need to execute it with something like the following:
   
         . ~/bin/killjobs
+
+* `orgname` - set organization name in Xcode.
+
+  Sets the default organization name that Xcode uses in the the copyright
+  line for new files, so you don't have to keep replacing `__MyCompanyName__`.
+  Example:
   
+        orgname "My Company Ltd"
+
 * `pygrep` - search for strings in a Python source tree.
   
   Run with `pygrep` _search-term_. This script greps through all the files
