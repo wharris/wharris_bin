@@ -8,6 +8,16 @@ platforms.
 Contents
 --------
 
+* `athome` - detect when the host is on the home network.
+
+  The `athome` utility uses the current SSID to guess whether it's running on a
+  machine that is connected to your home network. The home network is defined
+  by the `HOME_SSID` environment variable. If `HOME_SSID` is set and `athome`
+  is running on a Mac connected to a wireless network with an SSID that matches
+  `HOME_SSID` then `athome` returns true. `athome` returns false if is run a
+  Mac that is not connected to a wireless network with an SSID that matches
+  `HOME_SSID`. `athome` returns false if `HOME_SSID` is not set.
+
 * `backup.sh` - backup my home directory.
   
   This is run every night by `cron`. It just copies my home directory to a
