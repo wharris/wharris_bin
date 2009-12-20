@@ -70,7 +70,19 @@ Contents
   
   The remote name defaults to origin, but you can override that by setting
   the environment variable `REMOTE_NAME`.
+
+* `git-remote-list` - list remote Git repositorys.
   
+  Lists repositories created with git-remote-new.
+  
+  You'll need to set up a couple of environment variables to use this tool:
+  
+  - `REPO_SERVER` - the SSH address of your Git server in the form
+    _username@git.example.com_.
+    
+  - `REPO_SERVER_GIT_PATH` - the path on the server under which your
+    repositories will be created. For example _/home/username/git_.
+
 * `growlexec` - growl the success or failure of a command.
   
   Runs the command given in the arguments then sends a Growl notification
