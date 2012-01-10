@@ -61,4 +61,4 @@ if ! git remote add $REMOTE_NAME "ssh://$REPO_SERVER$REPO_SERVER_REPO_PATH"; the
 fi
 
 echo "Push"
-git push $REMOTE_NAME master
+git push --mirror $REMOTE_NAME
