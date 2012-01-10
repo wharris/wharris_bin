@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # cscript - run a C program like a script.
-# Copyright (C) 2008  Will Harris
+# Copyright (C) 2008-2012 Will Harris
 # 
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -18,9 +18,15 @@
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 SRC1=$1
+BASENAME=`basename $1.$0`
 shift
 ARGS=$@
-SRC2=`mktemp`.c
+TMPFILE=`mktemp -q -t ${BASENAME}`
+if [ $? -ne 0 ]; then
+    echo "$0: Can't create temp file, exiting..."
+    exit 1
+fi
+SRC2=${TMPFILE}.c
+OUT=${TMPFILE}
 cat $SRC1 | grep -v "^#!" > $SRC2
-OUT=`mktemp`
-cc $SRC2 -o $OUT && $OUT $ARGS
+cc $SRC2 -o $OUT && $OUT $ARGS && rm $OUT $SRC2
