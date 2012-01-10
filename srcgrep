@@ -29,6 +29,8 @@ find . \( -name "*.py" \
        -o -name "*.tpl" \
        -o -name "*.eca" \
        -o -name "*.sh" \
+       -o -name "*.php" \
+       -o -name "*.cs" \
        -o -name "RELEASE" \
        -o -name "applicationContext.xml" \
        -o -name "spring-servlet.xml" \
